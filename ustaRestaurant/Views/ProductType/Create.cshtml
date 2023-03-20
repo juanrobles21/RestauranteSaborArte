@@ -1,0 +1,35 @@
+﻿@model ProductType
+@{
+    ViewData["Title"] = "Add a new Product Type";
+}
+<div class="row text">
+    <div class="col-md-8 offset-3">
+
+        <div class="card mt-5 mb-5" style="max-width: 700px;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="https://images.pexels.com/photos/2295285/pexels-photo-2295285.jpeg?auto=compress&cs=tinysrgb&w=600" class="imgCard img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-8" style="align-self: center;">
+                    <div class="card-body">
+                        <h5 class="card-title">Create Product Type</h5>
+                        <form asp-action="Create">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-group">
+                                <label asp-for="Name" class="control-label"></label>
+                                <input asp-for="Name" class="form-control" />
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="submit" value="Create" class="btn btn-outline-success float-end mt-3" />
+                                <a class="btn btn-outline-secondary mt-3" asp-action="Index">Show all</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

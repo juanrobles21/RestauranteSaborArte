@@ -1,0 +1,44 @@
+﻿@using ustaRestaurant.Data.Enum
+@model Comment
+@{
+    ViewData["Title"] = "Add a new Comment";
+}
+<div class="row text">
+    <div class="col-md-8 offset-3">
+
+        <div class="card mt-5 mb-5" style="max-width: 700px;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="https://images.pexels.com/photos/4393667/pexels-photo-4393667.jpeg?auto=compress&cs=tinysrgb&w=600" class="imgCard img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-8" style="align-self: center;">
+                    <div class="card-body">
+                        <h5 class="card-title">Create Comment</h5>
+                        <form asp-action="Create">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-group">
+                                <label asp-for="FullName" class="control-label"></label>
+                                <input asp-for="FullName" class="form-control" />
+                                <span asp-validation-for="FullName" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="qualification" class="control-label"></label>
+                                <select asp-for="qualification" class="form-control" asp-items="Html.GetEnumSelectList<QualityProduct>()"></select>
+                                <span asp-validation-for="qualification" class="text-danger"></span>
+                            </div>
+                            <div class="form-check">
+                                <label asp-for="Opinion" class="control-label"></label>
+                                <input asp-for="Opinion" class="form-control" />
+                                <span asp-validation-for="Opinion" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Create" class="btn btn-outline-success float-end" />
+                                <a class="btn btn-outline-secondary" asp-action="Index">Show all</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

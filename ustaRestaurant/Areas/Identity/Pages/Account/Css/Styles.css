@@ -1,0 +1,96 @@
+﻿body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+:root {
+    --lg-font: "Kaisei Tokumin", serif;
+    --sm-font: "Poppins", sans-serif;
+    --pink: #c21400;
+    --black: black;
+    --yellow: yellow;
+}
+
+.holi {
+    color: var(--yellow) !important;
+}
+
+.bg-primary {
+    background-color: var(--pink) !important;
+}
+
+.bg-second {
+    background-color: var(--black) !important;
+}
+
+.btn2:not(.nav-btns button) {
+    background-color: #fff;
+    color: rgb(85, 85, 85);
+    padding: 10px 28px;
+    border-radius: 10px;
+    border: 1px solid rgb(85, 85, 85);
+}
+
+.btn2.btn2:not(.nav-btns button):hover {
+    background-color: var(--pink);
+    color: #fff;
+    border-color: var(--pink);
+}
+
+#header {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../src/icon/img/spa.jpg) top/cover no-repeat;
+}
+
+.titulo {
+    font-size: 40px;
+    font-family: var(--lg-font);
+}
+
+.carousel-inner h1 {
+    font-size: 60px;
+    font-family: var(--lg-font);
+}
+
+.carousel-item .btn2 {
+    border-color: #fff !important;
+}
+
+    .carousel-item .btn2:hover {
+        border-color: var(--pink) !important;
+    }
+
+.title h2::before {
+    position: absolute;
+    content: "";
+    width: 4px;
+    height: 50px;
+    background-color: var(--pink);
+    left: -20px;
+    top: 50%;
+    transform: translate(-50%);
+}
+
+.active-filter-btn2 {
+    background-color: var(--pink) !important;
+    color: #fff !important;
+    border-color: var(--pink) !important;
+}
+
+.blog-footer {
+    padding: 2.5rem 0;
+    color: #727272;
+    text-align: center;
+    background-color: #f9f9f9;
+    border-top: 0.05rem solid #e5e5e5;
+}
+
+.bg {
+    background-image: url(icon/img/22015.jpg);
+    background-position: center center;
+}

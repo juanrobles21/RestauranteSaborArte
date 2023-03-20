@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Comment>
+
+@{
+    ViewData["Title"] = "Admin of Comment";
+}
+<div class="container-fluid">
+    <div class="d-flex justify-content-center p-5">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col" width="20%">@Html.DisplayNameFor(mi => mi.FullName)</th>
+                    <th scope="col" width="10%">@Html.DisplayNameFor(mi => mi.qualification)</th>
+                    <th scope="col" width="40%" class="text-center">@Html.DisplayNameFor(mi => mi.Opinion)</th>
+                    <th scope="col" width="30%" class="text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var Comment in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(mi => Comment.FullName)</td>
+                        <td>@Html.DisplayFor(mi => Comment.qualification)</td>
+                        <td class="text-center">@Html.DisplayFor(mi => Comment.Opinion)</td>
+                        <td class="align-middle text-center">
+                            <a class="btn btn-outline-primary" asp-controller="Comment" asp-action="Edit" asp-route-id="@Comment.Id"><i class="bi bi-pencil-square"></i>&nbsp; Edit</a>
+                            <a class="btn btn-danger text-white" asp-controller="Comment" asp-action="Delete" asp-route-id="@Comment.Id"><i class="bi bi-trash-fill"></i>&nbsp; Delete</a>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
+@await Html.PartialAsync("_CreateItem", "Comment")
+

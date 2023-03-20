@@ -1,0 +1,45 @@
+﻿@model Delivery
+@{
+    ViewData["Title"] = "Update Delivery";
+}
+<div class="row text">
+    <div class="col-md-8 offset-3">
+
+        <div class="card mt-5 mb-5" style="max-width: 700px;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="https://images.pexels.com/photos/4393667/pexels-photo-4393667.jpeg?auto=compress&cs=tinysrgb&w=600" class="imgCard img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-8" style="align-self: center;">
+                    <div class="card-body">
+                        <h5 class="card-title">Update Delivery</h5>
+                        <form asp-action="Edit">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                            <div class="form-group">
+                                <label asp-for="NameDelivery" class="control-label"></label>
+                                <input asp-for="NameDelivery" class="form-control" />
+                                <span asp-validation-for="NameDelivery" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Phone" class="control-label"></label>
+                                <input asp-for="Phone" class="form-control" />
+                                <span asp-validation-for="Phone" class="text-danger"></span>
+                            </div>
+                            <div class="form-check">
+                                <input asp-for="StateDelivery" class="form-check-input" type="checkbox" id="flexCheckIndeterminate">
+                                <label asp-for="StateDelivery" class="form-check-label" for="flexCheckIndeterminate">
+                                </label>
+                                <span asp-validation-for="StateDelivery" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Update" class="btn btn-outline-success float-end" />
+                                <a class="btn btn-outline-secondary" asp-action="Index">Show all</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

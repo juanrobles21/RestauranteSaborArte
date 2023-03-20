@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Product>
+
+@{
+    ViewData["Title"] = "Admin of Product";
+}
+<div class="container-fluid">
+    <div class="d-flex justify-content-center p-5">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col" width="15%">@Html.DisplayNameFor(mi => mi.Name)</th>
+                    <th scope="col" width="35%">@Html.DisplayNameFor(mi => mi.Description)</th>
+                    <th scope="col" width="15%">@Html.DisplayNameFor(mi => mi.Price)</th>
+                    <th scope="col" width="25%">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var product in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(mi => product.Name)</td>
+                        <td>@Html.DisplayFor(mi => product.Description)</td>
+                        <td>@Html.DisplayFor(mi => product.Price)</td>
+                        <td class="align-middle">
+                            <a class="btn btn-outline-primary" asp-controller="Product" asp-action="Edit" asp-route-id="@product.Id"><i class="bi bi-pencil-square"></i>&nbsp; Edit</a>
+                            <a class="btn btn-outline-info" asp-controller="Product" asp-action="Details" asp-route-id="@product.Id"><i class="bi bi-eye"></i>&nbsp; Details</a>
+                            <a class="btn btn-danger text-white"asp-controller="Product" asp-action="Delete" asp-route-id="@product.Id"><i class="bi bi-trash-fill"></i>&nbsp; Delete</a>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
+@await Html.PartialAsync("_CreateItem", "Product")

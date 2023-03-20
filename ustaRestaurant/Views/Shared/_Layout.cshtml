@@ -1,0 +1,150 @@
+﻿@using ustaRestaurant.Data.Static
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Sabor y Arte</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/ustaRestaurant.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+</head>
+
+<body class="d-flex flex-column h-100">
+
+    <nav class="navbar navbar-expand-lg">
+
+        <div class="container">
+            <img src="~/css/logo.png" class="logo" />
+            <button class="navbar-toggler" style="border-color:#ffbe33" type="button" data-bs-toggle="collapse" data-bs-target="navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="bi bi-list" style="color:#ffbe33"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="me-auto" style="margin-top:13px; margin-left:-70px">
+                    <li class="nav-item" style="margin-left:90px"><a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index" style="color:#ffbe33;">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Product" asp-action="Index" style="color:#ffff;">Menu</a></li>
+                    <li class="nav-item"><a class="nav-link text-light" asp-area="" asp-controller="Orders" asp-action="AddItemToShoppingCart" style="color:#ffff;">Order @await Component.InvokeAsync("ShoppingCartSummary") </a></li>
+
+                    @if (User.Identity.IsAuthenticated && User.IsInRole(UserRoles.Admin))
+                    {
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:#ffff;">
+                                <i class="bi bi-gear"></i>
+                                &nbsp;
+                                Management
+                            </a>
+                            <div class="ee dropdown-menu">
+                                <a class="dropdown-item" asp-controller="Delivery" asp-action="Index" style="color:#ffbe33;"><i class="bi bi-truck"></i>&nbsp; Delivery</a>
+                                <a class="dropdown-item" asp-controller="Product" asp-action="Admin" style="color:#ffbe33;"><i class="bi bi-bag-fill"></i>&nbsp; Product</a>
+                                <a class="dropdown-item" asp-controller="ProductType" asp-action="Index" style="color:#ffbe33;"><i class="bi bi-bag-heart-fill"></i>&nbsp; Product Type</a>
+                                <a class="dropdown-item" asp-controller="Booking" asp-action="Index" style="color:#ffbe33;"><i class="bi bi-journal-bookmark-fill"></i>&nbsp; Bookings</a>
+                                <a class="dropdown-item" asp-controller="Comment" asp-action="Index" style="color:#ffbe33;"><i class="bi bi-chat-right-quote-fill"></i>&nbsp; Comments</a>
+                            </div>
+                        </li>
+                    }
+
+
+                    <li class="nav-item dropdown">
+                        <form class="d-flex" asp-controller="Product" asp-action="Filter">
+                            <input name="searchString" type="text" class="form-control" placeholder="Search for a Product..." aria-label="Search box" aria-describedby="button-addon2" style="border-radius:0.7rem" />
+                            &nbsp;&nbsp;&nbsp;
+                            <button class="btn my-2 my-sm-0" type="submit" style="border-radius:0.7rem; color:#ffbe33; border-color:#ffbe33"><i class="bi bi-search"></i><span class="decoracionBoton"></span></button>
+                        </form>
+                    </li>
+                    <partial name="_LoginPartial" />
+                </ul>
+            </div>
+
+
+        </div>
+
+
+    </nav>
+
+
+    <div class="">
+        <main role="main" class="flex-shrink-0">
+            @RenderBody()
+        </main>
+    </div>
+    <footer class="footer_section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 footer-col">
+                    <div class="footer_contact">
+                        <h4>
+                            Contact Us
+                        </h4>
+                        <div class="contact_link_box">
+                            <a href="">
+                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                <span>
+                                    Location
+                                </span>
+                            </a>
+                            <a href="">
+                                <i class="fa fa-phone" aria-hidden="true"></i>
+                                <span>
+                                    Call +57 3208377489
+                                </span>
+                            </a>
+                            <a href="">
+                                <i class="fa fa-envelope" aria-hidden="true"></i>
+                                <span>
+                                    saboryarte2022@gmail.com
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 footer-col">
+                    <div class="footer_detail">
+                        <a href="" class="footer-logo">
+                            Feane
+                        </a>
+                        <p>
+                            Necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with
+                        </p>
+                        <div class="footer_social">
+                            <a href="https://www.facebook.com/profile.php?id=100063594102768&mibextid=ZbWKwL">
+                                <i class="bi bi-facebook" aria-hidden="true"></i>
+                            </a>
+                            <a href="">
+                                <i class="bi bi-twitter" aria-hidden="true"></i>
+                            </a>
+                            <a href="">
+                                <i class="bi bi-linkedin" aria-hidden="true"></i>
+                            </a>
+                            <a href="https://instagram.com/saboryartesogamoso?igshid=NTdlMDg3MTY=">
+                                <i class="bi bi-instagram" aria-hidden="true"></i>
+                            </a>
+                            <a href="">
+                                <i class="bi bi-pinterest" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 footer-col">
+                    <h4>
+                        Opening Hours
+                    </h4>
+                    <p>
+                        Everyday
+                    </p>
+                    <p>
+                        12.00 Pm -10.00 Pm
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+@await RenderSectionAsync("Scripts", required: false)

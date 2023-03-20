@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Delivery>
+
+@{
+    ViewData["Title"] = "Admin of delivery";
+}
+<div class="container-fluid">
+    <div class="d-flex justify-content-center p-5">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col" width="35%">@Html.DisplayNameFor(mi => mi.NameDelivery)</th>
+                    <th scope="col" width="20%">@Html.DisplayNameFor(mi => mi.Phone)</th>
+                    <th scope="col" width="15%" class="text-center">@Html.DisplayNameFor(mi => mi.StateDelivery)</th>
+                    <th scope="col" width="30%" class="text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var delivery in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(mi => delivery.NameDelivery)</td>
+                        <td>@Html.DisplayFor(mi => delivery.Phone)</td>
+                        <td class="text-center">@Html.DisplayFor(mi => delivery.StateDelivery)</td>
+                        <td class="align-middle text-center">
+                            <a class="btn btn-outline-primary" asp-controller="Delivery" asp-action="Edit" asp-route-id="@delivery.Id"><i class="bi bi-pencil-square"></i>&nbsp; Edit</a>
+                            <a class="btn btn-danger text-white" asp-controller="Delivery" asp-action="Delete" asp-route-id="@delivery.Id"><i class="bi bi-trash-fill"></i>&nbsp; Delete</a>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
+@await Html.PartialAsync("_CreateItem", "Delivery")
+

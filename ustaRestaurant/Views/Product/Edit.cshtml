@@ -1,0 +1,71 @@
+﻿@using ustaRestaurant.Data.ViewModels
+
+@model NewProductVM
+
+@{
+    ViewData["Title"] = "Update Product";
+}
+
+<div class="row text">
+    <div class="col-md-8 offset-1">
+
+        <div class="card mt-5 mb-5" style="width: 1132px;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img id="ImagePreview" class="imgCard img-fluid rounded-start"/>
+                </div>
+                <div class="col-md-8" style="align-self: center;">
+                    <div class="card-body">
+                        <h5 class="card-title">Update Product</h5>
+                        <form asp-action="Edit">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-group">
+                                <label asp-for="Image" class="control-label"></label>
+                                <input asp-for="Image" class="form-control" />
+                                <span asp-validation-for="Image" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Name" class="control-label"></label>
+                                <input asp-for="Name" class="form-control" />
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Description" class="control-label"></label>
+                                <input asp-for="Description" class="form-control" />
+                                <span asp-validation-for="Description" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Price" class="control-label"></label>
+                                <input asp-for="Price" class="form-control" />
+                                <span asp-validation-for="Price" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="ProductTypeId" class="control-label"></label>
+                                <select asp-for="ProductTypeId" class="form-control" asp-items="ViewBag.ProductTypes"></select>
+                                <span asp-validation-for="ProductTypeId" class="text-danger"></span>
+                            </div>
+                            <div class="form-group mt-2">
+                                <input type="submit" value="Update" class="btn btn-outline-success float-end" />
+                                <a class="btn btn-outline-secondary" asp-action="Admin">Show all</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            var output = document.getElementById("ImagePreview");
+            output.src = $("#Image").val();
+        });
+
+        $("#Image").on("change", function() {
+            var output = document.getElementById("ImagePreview");
+            output.src = $(this).val();
+        })
+    </script>
+}

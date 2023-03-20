@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Booking>
+
+@{
+    ViewData["Title"] = "Admin of Booking";
+}
+<div class="container-fluid">
+    <div class="d-flex justify-content-center p-5">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col" width="20%">@Html.DisplayNameFor(mi => mi.FullName)</th>
+                    <th scope="col" width="10%">@Html.DisplayNameFor(mi => mi.PhoneNumber)</th>
+                    <th scope="col" width="10%" class="text-center">@Html.DisplayNameFor(mi => mi.Email)</th>
+                    <th scope="col" width="10%" class="text-center">@Html.DisplayNameFor(mi => mi.HowMany)</th>
+                    <th scope="col" width="20%" class="text-center">@Html.DisplayNameFor(mi => mi.Date)</th>
+                    <th scope="col" width="30%" class="text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var booking in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(mi => booking.FullName)</td>
+                        <td>@Html.DisplayFor(mi => booking.PhoneNumber)</td>
+                        <td class="text-center">@Html.DisplayFor(mi => booking.Email)</td>
+                        <td class="text-center">@Html.DisplayFor(mi => booking.HowMany)</td>
+                        <td class="text-center">@Html.DisplayFor(mi => booking.Date)</td>
+                        <td class="align-middle text-center">
+                            <a class="btn btn-outline-primary" asp-controller="Booking" asp-action="Edit" asp-route-id="@booking.Id"><i class="bi bi-pencil-square"></i>&nbsp; Edit</a>
+                            <a class="btn btn-danger text-white" asp-controller="Booking" asp-action="Delete" asp-route-id="@booking.Id"><i class="bi bi-trash-fill"></i>&nbsp; Delete</a>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>

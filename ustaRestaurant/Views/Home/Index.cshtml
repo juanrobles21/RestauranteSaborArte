@@ -1,0 +1,175 @@
+﻿@model Booking
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+<html>
+<header>
+    <div class="banner">
+        <div class="navbar">
+            <div class="content">
+                <h1 class="titulito">PIZZAS Y PASTAS<br /><h2>SABOR Y ARTE</h2></h1>
+                <p class="parrafo">
+                    Te mereces un momento especial, y nosotros queremos llevar Italia a tu mesa como en cada visita a nuestros restaurantes. <br />Prueba la auténtica cocina italiana a domicilio o para recoger en tu sede más cercana.
+                </p>
+                <div>
+                    <a class="boton" type="button" asp-controller="Product" asp-action="Index"><span class="decoracionBoton"></span>WATCH MORE</a>
+                    <a class="boton" type="button" asp-area="Identity" asp-page="/Account/Logout"><span class="decoracionBoton"></span>SUBSCRIBE</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<body>
+    <section class="py-5">
+        <div class="container px-5 my-5">
+            <div class="row gx-5 justify-content-center">
+                <div class="col-lg-8 col-xl-6">
+                    <div class="text-center">
+                        <h2 class="fw-bolder" style="font-size: 2.5rem;
+font-weight: bold;
+font-family: 'Dancing Script', cursive;margin-bottom:40px">
+                            Recommendations for you
+                        </h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row gx-5">
+                @foreach (var product in ViewBag.Data)
+                {
+                    @if (product.Id == 8 || product.Id == 25 || product.Id == 41 || product.Id == 51 || product.Id == 65 || product.Id == 71)
+                    {
+                        <div class="col-lg-4 mb-5">
+                            <div class="card h-100 shadow border-0">
+                                <img class="card-img-top" src="@product.Image" alt="...">
+                                <div class="card-body p-4">
+
+                                    <a class="text-decoration-none link-dark stretched-link" asp-controller="Product" asp-action="Details" asp-route-id="@product.Id"><h5 class="card-title mb-3" style="font-weight: bold;">@product.Name</h5></a>
+                                    <p class="card-text mb-0">
+                                        @product.Description
+                                    </p>
+                                    <div class="card-body d-flex justify-content-between align-items-center p-0">
+                                        <h6>$@product.Price</h6>
+                                        <a class="btn  btn-sm boton-cart"><i class="bi bi-cart-fill" style="color:#ffffff"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+
+                }
+
+
+
+            </div>
+            <div class="container-fluid">
+                <div class="d-flex justify-content-center">
+                    <div class="btn-box">
+                        <a style="display: inline-block;
+padding: 10px 45px;
+background-color: #ffbe33;
+color: #ffffff;
+border-radius: 45px;
+border: none;
+margin-top: 10px;
+cursor:pointer;" asp-area="" asp-controller="Product" asp-action="Index">
+                        View More
+                    </a>
+                </div>
+            </div>
+            <section class="book_section layout_padding">
+                <div class="container">
+                    <div class="heading_container">
+                        <h2 style="font-size: 2.5rem;
+font-weight: bold;
+font-family: 'Dancing Script', cursive;">
+                            Book A Table
+                        </h2>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form_container">
+                                <form asp-controller="Booking" asp-action="Create">
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                    <div class="form-group">
+                                        <input asp-for="FullName" class="booking" placeholder="FullName"/>
+                                        <span asp-validation-for="FullName" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <input asp-for="PhoneNumber" class="booking" placeholder="PhoneNumber"/>
+                                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <input asp-for="Email" class="booking" placeholder="Email"/>
+                                        <span asp-validation-for="Email" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <input asp-for="HowMany" class="booking" placeholder="How many persons?"/>
+                                        <span asp-validation-for="HowMany" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="date" asp-for="Date" class="booking"/>
+                                        <span asp-validation-for="Date" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="submit" value="Book Now" class="btn_box float-end mt-2" />
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="map_container ">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3970.3098387437885!2d-72.96430793060523!3d5.668262082876844!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e6a44ec3cb29967%3A0xd5de3570ea7b44fa!2sSabor%20%26%20Arte!5e0!3m2!1ses!2sco!4v1669586460510!5m2!1ses!2sco" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+
+
+            <!-- ======= Testimonials Section ======= -->
+            <section id="testimonials" class="testimonials">
+                <div class="container position-relative">
+                    <div class="heading_container heading_center psudo_white_primary mb_45">
+                        <h2 style="font-family: 'Dancing Script', cursive; color:#ffffff;margin-bottom:10px">
+                            What Says Our Customers
+                        </h2>
+                    </div>
+                    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            @foreach (var comment in ViewBag.DataComment)
+                            {
+                                @if (comment.Id == 1)
+                                {
+                                    <div class="carousel-item active">
+                                        <div class="row gy-4 justify-content-center"><div class="col-lg-6"><div class="testimonial-content"><p style="margin-bottom:10px ; color:#ffffff"> <i class="bi bi-quote quote-icon-left" style="color:#ffbe33;"></i> @comment.Opinion <i class="bi bi-quote quote-icon-right" style="color:#ffbe33;"></i></p><h3 style="margin-bottom:5px ;color:#ffffff">@comment.FullName</h3><div class="stars" style="color:#ffbe33;"> <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div></div></div><div class="col-lg-2 text-center"> <img src="~/css/Comments.png" class="img-fluid testimonial-img" alt=""></div></div>
+                                    </div>
+                                }
+                                <div class="carousel-item">
+                                    <div class="row gy-4 justify-content-center"><div class="col-lg-6"><div class="testimonial-content"><p style="margin-bottom:10px ;color:#ffffff"> <i class="bi bi-quote quote-icon-left" style="color:#ffbe33;"></i> @comment.Opinion <i class="bi bi-quote quote-icon-right" style="color:#ffbe33;"></i></p><h3 style="margin-bottom:5px ;color:#ffffff">@comment.FullName</h3><div class="stars" style="color:#ffbe33;"> <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div></div></div><div class="col-lg-2 text-center"> <img src="~/css/Comments.png" class="img-fluid testimonial-img" alt=""></div></div>
+                                </div>
+                            }
+
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                        
+                </div>
+            </section><!-- End Testimonials Section -->
+
+        </div>
+    </section>
+
+</body>
+</html>
+
